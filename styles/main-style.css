@@ -46,3 +46,7 @@ body {
     height: 3px;
     background-color: black;
 }
+.shadow {
+    transition: all 1s;
+    z-index: -1;
+  }
