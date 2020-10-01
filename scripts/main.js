@@ -41,6 +41,8 @@ function onKeyPress(answer) {
             targets: '.main-box',
             translateX: setCoordinatesX(),
             translateY: setCoordinatesY(),
+            // translateX: window.innerWidth - 150,
+            // translateY: window.innerHeight - 150,
             backgroundColor: colors[anime.random(0, colors.length)],
             duration: Math.floor(Math.random() * (1250 - 600 + 1)) + 500
         });
@@ -93,48 +95,4 @@ function gameOver(message) {
     progressBar.restart();
     var scoreBox = document.getElementById("scoreCount");
     scoreBox.innerHTML = 0;
-}
-var main_box= document.getElementById('main_box'),
-    tleft = main_box.offsetLeft,
-    ttop = main_box.offsetTop,
-    smokes= [],
-    deltaX= 2,
-    deltaY = 2;
-
-setInterval(fly, 10); 
-
-function fly() {
-  if(Math.random()>0.5) {
-    var smoke= main_box.cloneNode();
-
-    smoke.classList.add('smoke');
-    smoke.style.background= 'gray';
-    smoke.style.opacity= 0.2;
-    smoke.style.transition= Math.random()+'s';
-    smoke.style.width= Math.random()*main_box.offsetWidth+'px';
-    smoke.style.height= Math.random()*main_box.offsetHeight+'px';
-    smoke.style.marginTop= smoke.offsetHeight+'px';
-    smoke.style.borderRadius= (Math.random()*25+25)+'%';
-    document.body.appendChild(smoke);
-    setTimeout(function() {
-      smoke.style.opacity= 0;
-    },100);
-    
-    smokes.push(smoke);
-    if(smokes.length>20) {
-      smokes[0].parentNode.removeChild(smokes[0]);
-      smokes.shift();
-    }
-  }
-  
-  if(tleft+deltaX > document.body.offsetWidth-main_box.offsetWidth   || tleft < 0) {
-    deltaX= -deltaX;
-  }
-  if(ttop +deltaY > document.body.offsetHeight-main_box.offsetHeight || ttop  < 0) {
-    deltaY= -deltaY;
-  }
-  tleft+= deltaX;
-  ttop += deltaY;
-  main_box.style.left = tleft + 'px';
-  main_box.style.top  = ttop  + 'px';
-}
+} 
