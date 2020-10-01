@@ -40,3 +40,9 @@ body {
     color: blanchedalmond;
     position: absolute;
 }
+
+#progressBar {
+    width: 100px;
+    height: 3px;
+    background-color: black;
+}
